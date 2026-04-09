@@ -1,66 +1,73 @@
-# 🌦️ SENAMHI Scraper 
+# 🌦️ SENAMHI Scraper
 
 ![Python](https://img.shields.io/badge/Python-3.10+-blue.svg)
 ![PySide6](https://img.shields.io/badge/Framework-PySide6-green.svg)
 ![Status](https://img.shields.io/badge/Status-Estable-brightgreen.svg)
+![Scraping](https://img.shields.io/badge/Engine-Requests%20%2B%20WebEngine-orange.svg)
 
-**SENAMHI Scraper** es una aplicación de escritorio profesional para la extracción, limpieza y gestión de datos climatológicos desde el portal oficial de **SENAMHI (Perú)**.
-
----
-
-## 🚀 Características Principales
-
-* **🧼 Limpieza Agresiva:** Elimina automáticamente avisos de servidor (`PHP Deprecated`, `Warning`, `Notice`) antes de procesar la data.
-* **📊 Parsing Robusto:** Algoritmo avanzado para interpretar tablas HTML y metadatos técnicos.
-* **📂 Estructura Automática:** Organiza las descargas por tipo de estación y nombre automáticamente.
-* **⚡ Descarga Masiva:** Procesa departamentos enteros filtrando por tecnología de estación.
-* **🛠️ Modo Híbrido:** Usa *Requests* para velocidad y *WebEngine* (Navegador) para resolver **Captchas**.
+**SENAMHI Scraper** es una solución avanzada de escritorio para la extracción masiva y saneamiento de datos climáticos del portal oficial de SENAMHI (Perú). Diseñada para investigadores y estudiantes que necesitan series históricas limpias sin errores de servidor.
 
 ---
 
-## 🧠 Estaciones Soportadas
+## 🚀 Funcionalidades Estrella
 
-* **🟢 Meteorológica:** Convencional y Automática.
-* **🔵 Hidrológica:** Convencional y Automática.
+* **🧼 Saneamiento "Clean-HTML":** Motor especializado en eliminar avisos `PHP Deprecated`, `Warning` y `Notice` que corrompen las tablas originales del SENAMHI.
+* **⚡ Descarga Híbrida:** * **Modo Rápido:** Usa `Requests` para descargar años de datos en segundos.
+  * **Modo Seguro:** Usa `WebEngine` (Navegador Chromium) para resolver **Captchas** cuando el servidor bloquea el acceso.
+* **📂 Organización Automática:** Crea carpetas inteligentes por Tipo de Estación y Nombre, evitando el desorden de archivos.
+* **📊 Normalización de Variables:** Renombra columnas automáticamente (Temperatura, Humedad, etc.) para que sean listas para usar en Excel o Python.
 
 ---
 
-## 🏗️ Estructura del Proyecto
+## 🛠️ Guía Maestra de Instalación
 
-```text
-senamhi_scraper/
-├── main.py                # Interfaz y lógica principal
-├── README.md              # Documentación
-└── output/                # Carpeta de descargas
-    └── Estacion_Tipo/
-        └── Nombre_Estacion/
-            └── senamhi_2024-01.csv
+Sigue estos pasos para configurar un entorno limpio y evitar errores de librerías.
 
-⚙️ Requisitos e Instalación
-1. Requisitos
-Python 3.10 o superior.
+### 1. Clonar y Preparar
+```bash
+git clone [https://github.com/tu-usuario/senamhi-scraper.git](https://github.com/tu-usuario/senamhi-scraper.git)
+cd senamhi-scraper
+2. Configurar Entorno Virtual (VENV)
+Es vital para no generar conflictos con otras versiones de Python.
 
-2. Instalación de dependencias
-Copia y ejecuta esto en tu terminal:
+En Windows:
 
 Bash
+python -m venv venv
+venv\Scripts\activate
+En Linux / macOS:
+
+Bash
+python3 -m venv venv
+source venv/bin/activate
+3. Instalación de Dependencias
+Con el entorno activado (venv), ejecuta:
+
+Bash
+python -m pip install --upgrade pip
 pip install requests beautifulsoup4 PySide6 PySide6-WebEngine
-🖥️ Guía de Uso Rápido
-Selección: Elige un departamento y presiona Consultar.
+🖥️ Manual de Operación
+Inicio: Ejecuta python main.py.
 
-Filtrado: Usa el buscador para encontrar estaciones por nombre o código.
+Exploración: Selecciona un departamento (ej. Puno o Madre de Dios) y dale a Consultar.
 
-Visualización: Haz clic en una estación para cargar su previsualización.
+Filtrado: Usa la barra de búsqueda para encontrar tu estación por nombre o código (ej. 47E8336C).
 
-Descarga: * Usa Descargar Rango para meses específicos.
+Descarga Individual: Entra a la estación, elige el rango de fechas y dale a Descargar Rango.
 
-Usa Descargar TODO para el historial completo.
+Descarga Masiva: Usa la pestaña Masiva para bajar todas las estaciones automáticas de un departamento con un solo clic.
 
-Usa el panel Masiva para bajar todo un departamento.
+📂 Estructura de Salida (Output)
+La aplicación genera una estructura de carpetas profesional:
 
-📁 Formato de Salida (CSV)
-Los archivos se guardan con codificación utf-8-sig para que abran correctamente en Excel:
-
+Plaintext
+output/
+└── Estacion_Meteorologica_Automatica/
+    └── MALINOWSKY/
+        ├── senamhi_2024-01.csv  <-- Data limpia
+        ├── senamhi_2024-02.csv
+        └── ...
+Ejemplo de CSV generado:
 Fragmento de código
 Estacion,MALINOWSKY
 Codigo,47E8336C
@@ -69,11 +76,3 @@ Departamento,MADRE DE DIOS
 FECHA,TEMPERATURA_MAX,TEMPERATURA_MIN,HUMEDAD_RELATIVA
 2024-01-01,32.5,22.1,85
 2024-01-02,31.8,21.5,88
-🧼 Manejo de Errores y Seguridad
-El sistema está diseñado para ser resiliente:
-
-Saneamiento: Ignora filas vacías o corruptas.
-
-Reintentos: Si una petición falla, el sistema reintenta automáticamente.
-
-Sesión: Mantiene cookies persistentes para evitar bloqueos por parte del servidor.
