@@ -1,0 +1,9 @@
+﻿Fuente: SENAMHI / DRD * Datos sin control de calidad. * El uso de estos datos será de entera responsabilidad del usuario.,Leyenda: * S/D = Sin Datos. * T = Trazas (Precipitación < 0.1 mm/día).
+FECHA,TEMPERATURA_MAX,TEMPERATURA_MIN,HUMEDAD_RELATIVA,PRECIPITACION_TOTAL
+2026-04-01,33.6,23.4,85.5,27.4
+2026-04-02,29.8,23,93.9,53.9
+2026-04-03,29.2,22.8,93.8,0.0
+2026-04-04,33.2,23.2,89.6,0.0
+2026-04-05,34.2,23.6,90.4,20.8
+2026-04-06,30.4,23.2,93.0,0.0
+2026-04-07,33.6,23,85.8,1.1

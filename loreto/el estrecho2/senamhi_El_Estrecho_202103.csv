@@ -1,0 +1,5 @@
+﻿Fuente: SENAMHI / DRD * Datos sin control de calidad. * El uso de estos datos será de entera responsabilidad del usuario.,Leyenda: * S/D = Sin Datos. * T = Trazas (Precipitación < 0.1 mm/día).
+FECHA,TEMPERATURA_MAX,TEMPERATURA_MIN,HUMEDAD_RELATIVA,PRECIPITACION_TOTAL
+2021-03-01,32,20,S/D,0.0
+2021-03-02,S/D,20.8,S/D,S/D
+2021-04-01,34.2,21,S/D,2.0

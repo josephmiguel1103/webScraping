@@ -1,0 +1,9 @@
+﻿Fuente: SENAMHI / DRD * Datos sin control de calidad. * El uso de estos datos será de entera responsabilidad del usuario.,Leyenda: * S/D = Sin Datos. * T = Trazas (Precipitación < 0.1 mm/día).
+FECHA,NIVEL DEL RIO (M) 06,NIVEL DEL RIO (M) 10,NIVEL DEL RIO (M) 14,NIVEL DEL RIO (M) 18
+2026-04-01,14.050,14.040,14.030,14.020
+2026-04-02,14.000,14.000,13.990,13.980
+2026-04-03,13.950,13.940,13.930,13.920
+2026-04-04,13.900,13.900,13.890,13.880
+2026-04-05,13.860,13.860,13.860,13.850
+2026-04-06,13.830,13.830,13.830,13.820
+2026-04-07,13.800,0.000,0.000,0.000
