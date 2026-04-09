@@ -1,90 +1,24 @@
-🌦️ SENAMHI Scraper v4.1
-
-Aplicación de escritorio en Python para consultar y descargar datos meteorológicos e hidrológicos del portal de SENAMHI.
-
-🚀 Características
-Limpieza agresiva de errores del servidor (PHP Deprecated, Warning, etc.)
-Parsing robusto de tablas HTML
-Descarga automática por períodos (mes/año)
-Descarga masiva por tipo de estación
-Exportación a CSV estructurado
-Interfaz gráfica con PySide6
-Soporte para captcha (opcional con WebEngine)
-🧠 Tipos de estaciones soportadas
-🟢 Meteorológica Convencional
-🟢 Meteorológica Automática
-🔵 Hidrológica Convencional
-🔵 Hidrológica Automática
-🏗️ Estructura del proyecto
-senamhi_scraper/
+Aquí tienes una versión profesional, optimizada y bien estructurada de tu README.md. He mejorado la redacción, añadido una sección de flujo de trabajo y organizado la información para que sea más atractiva en GitHub.🌦️ SENAMHI Scraper v4.1SENAMHI Scraper es una potente aplicación de escritorio desarrollada en Python diseñada para la extracción, limpieza y gestión de datos climatológicos desde el portal oficial de SENAMHI (Perú). Esta versión 4.1 está específicamente optimizada para lidiar con las inestabilidades y errores de servidor del portal gubernamental.🚀 Características Destacadas🧼 Motor de Limpieza Agresiva: Filtra y elimina automáticamente avisos de servidor (PHP Deprecated, Warning, Notice) que suelen corromper la data original.📊 Parsing Robusto: Algoritmo avanzado para interpretar tablas HTML complejas y metadatos de estaciones.📂 Descarga Estructurada: Sistema de archivos automatizado que organiza las descargas por tipo de estación y nombre.⚡ Descarga Masiva: Capacidad para procesar departamentos enteros filtrando por el tipo de tecnología de la estación.🛠️ Modo Híbrido: Soporte para peticiones directas (Requests) y renderizado de navegador (WebEngine) para superar bloqueos de Captcha.🧠 Estaciones SoportadasIconoTipo de EstaciónTecnología🟢MeteorológicaConvencional / Automática🔵HidrológicaConvencional / Automática🏗️ Estructura del ProyectoPlaintextsenamhi_scraper/
 │
-├── main.py
-├── README.md
-└── output/
-    ├── Estacion_Meteorologica_Automatica/
-    │   └── Nombre_Estacion/
-    │       ├── senamhi_2024-01.csv
-    │       ├── senamhi_2024-02.csv
-    │       └── ...
-⚙️ Requisitos
-Python 3.10 o superior
-📦 Instalación de dependencias
+├── main.py                # Punto de entrada y lógica de UI
+├── core/                  # Motores de scraping y limpieza (opcional si lo separas)
+├── README.md              # Documentación
+└── output/                # Directorio raíz de descargas
+    └── Estacion_Tipo/     # Categoría (ej. Meteorológica Automática)
+        └── Nombre_Est/    # Carpeta única por estación
+            ├── senamhi_2024-01.csv
+            └── senamhi_2024-02.csv
+⚙️ Configuración del EntornoRequisitosPython 3.10 o superior.Instalación de DependenciasBash# Dependencias base
 pip install requests beautifulsoup4 PySide6
-(Opcional para captcha)
+
+# Soporte para resolución de Captcha (Recomendado)
 pip install PySide6-WebEngine
-▶️ Ejecución
-python main.py
-🖥️ Uso
-1. Seleccionar departamento
-Cargar lista
-Elegir uno (ej: Lima, Cusco, etc.)
-2. Consultar estaciones
-Filtrar por tipo
-Buscar por nombre
-3. Visualizar datos
-Tabla de registros
-Información de estación
-4. Descargar CSV
-
-Opciones disponibles:
-
-Descargar por rango
-Descargar todo
-Descarga masiva por tipo
-📁 Formato de salida (CSV)
-
-Ejemplo:
-
-Estacion,Nombre
-Ubicacion,Lima
+🖥️ Guía de UsoExploración: Selecciona un departamento y presiona "Consultar" para listar todas las estaciones disponibles.Filtrado: Utiliza el buscador en tiempo real para localizar estaciones por nombre o código.Visualización: Haz clic en una estación para ver la previsualización de datos y metadatos técnicos (Latitud, Longitud, Altitud).Extracción: * Por Rango: Selecciona meses específicos.Descarga Total: Obtiene todo el historial disponible de la estación.Masiva: Descarga todas las estaciones de un departamento que coincidan con los tipos seleccionados.📁 Formato de Salida (CSV)La aplicación exporta archivos con codificación utf-8-sig (compatible con Excel) incluyendo un encabezado de metadatos:Fragmento de códigoEstacion,MALINOWSKY
+Codigo,47E8336C
+Departamento,MADRE DE DIOS
+Provincia,TAMBOPATA
 
 FECHA,TEMPERATURA_MAX,TEMPERATURA_MIN,HUMEDAD_RELATIVA
-2024-01-01,28,19,85
-2024-01-02,27,18,88
-🔧 Arquitectura del código
-Componente	Función
-_http_get / _http_post	Manejo HTTP robusto
-_clean()	Limpieza de errores PHP
-_parse_tabla()	Parsing de tablas
-_parse_meta()	Extracción de metadatos
-_fetch_periodo()	Descarga por período
-descargar_estacion_completa()	Descarga total
-api_estaciones()	Listado por departamento
-🧼 Manejo de errores
-
-El sistema:
-
-Elimina errores Deprecated, Warning, Notice
-Filtra datos corruptos
-Ignora filas vacías
-Reintenta solicitudes fallidas automáticamente
-🧩 Tecnologías usadas
-Python
-Requests
-BeautifulSoup
-PySide6 (Qt)
-WebEngine (opcional)
-⚠️ Limitaciones
-Dependencia del HTML de SENAMHI (puede cambiar)
-Algunos datos requieren captcha
-Descarga masiva puede tardar
+2024-01-01,32.5,22.1,85
+2024-01-02,31.8,21.5,88
+🔧 Arquitectura del CódigoComponenteFunción Técnica_http_get / _http_postManejo de sesiones y reintentos automáticos._clean()Filtro Regex para saneamiento de HTML corrupto._parse_tabla()Conversor de etiquetas HTML a estructuras de datos Python.api_estaciones()Fetching del JSON de estaciones por dp_key.
